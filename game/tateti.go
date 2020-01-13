@@ -1,11 +1,10 @@
-package main
+package game
 
 import (
 	"errors"
 )
 
 type Symbol int
-
 const (
 	X     Symbol = 1
 	O     Symbol = 2
@@ -91,6 +90,7 @@ func (game tateti) validateWinner() Symbol {
 		winner = game.validateLine(PossibleWins[possibleWin])
 		possibleWin++
 	}
+
 	return winner
 }
 
@@ -114,3 +114,18 @@ type tateti struct {
 	lastTurn  Symbol
 	winner    Symbol
 }
+
+func (game tateti) Positions() [9]Symbol {
+	return game.positions
+}
+
+func (game tateti) LastTurn() Symbol {
+	return game.lastTurn
+}
+
+func (game tateti) Winner() Symbol {
+	return game.winner
+}
+
+
+

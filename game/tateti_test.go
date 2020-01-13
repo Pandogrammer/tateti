@@ -1,4 +1,4 @@
-package main
+package game
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -10,7 +10,7 @@ func TestCross(t *testing.T) {
 
 	updatedGame := game.Cross(4)
 
-	assert.Equal(t, X, updatedGame.positions[4])
+	assert.Equal(t, X, updatedGame.Positions()[4])
 }
 
 func TestCircle(t *testing.T) {
@@ -18,7 +18,7 @@ func TestCircle(t *testing.T) {
 
 	updatedGame := game.Circle(4)
 
-	assert.Equal(t, O, updatedGame.positions[4])
+	assert.Equal(t, O, updatedGame.Positions()[4])
 }
 
 func TestOccupiedSlot(t *testing.T) {
@@ -32,7 +32,7 @@ func TestOccupiedSlot(t *testing.T) {
 func TestLastTurn(t *testing.T) {
 	game, _ := Tateti().Move(O, 4)
 
-	assert.Equal(t, O, game.lastTurn)
+	assert.Equal(t, O, game.LastTurn())
 }
 
 func TestLastTurnError(t *testing.T) {
@@ -48,5 +48,5 @@ func TestWinCondition(t *testing.T) {
 
 	game, _ = game.Move(X, 6)
 
-	assert.Equal(t, O, game.winner)
+	assert.Equal(t, O, game.Winner())
 }
